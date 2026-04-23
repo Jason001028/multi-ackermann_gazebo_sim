@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <robot name="racebot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+<xacro:arg name="robot_name" default="racebot"/>
+<xacro:property name="robot_name" value="$(arg robot_name)"/>
+
 <!-- Gazebo references -->
 
 <gazebo reference="base_link">
@@ -63,15 +66,14 @@
 <!-- Gazebo Plugins -->
 <gazebo>
   <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-    <robotNamespace>/racebot</robotNamespace>
-    <robotParam>robot_description</robotParam>
+    <robotNamespace>/${robot_name}</robotNamespace>
+    <robotParam>${robot_name}/robot_description</robotParam>
     <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
     <legacyModeNS>true</legacyModeNS>
   </plugin>
 </gazebo>
 
 <!-- hokuyo -->
-
   <gazebo reference="lidar">
     <material>Gazebo/Grey</material>
     <sensor type="ray" name="hokuyo_sensor">
@@ -98,8 +100,8 @@
         </noise>
       </ray>
       <plugin name="gazebo_ros_hokuyo_controller" filename="libgazebo_ros_laser.so">
-        <topicName>/scan</topicName>
-        <frameName>lidar</frameName>
+        <topicName>/${robot_name}/scan</topicName>
+        <frameName>${robot_name}/lidar</frameName>
       </plugin>
     </sensor>
   </gazebo>
@@ -130,10 +132,10 @@
       <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>0.0</updateRate>
-        <cameraName>rrbot/camera1</cameraName>
+        <cameraName>${robot_name}/camera1</cameraName>
         <imageTopicName>image_raw</imageTopicName>
         <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-        <frameName>camera</frameName>
+        <frameName>${robot_name}/camera</frameName>
         <hackBaseline>0.07</hackBaseline>
         <distortionK1>0.0</distortionK1>
         <distortionK2>0.0</distortionK2>
@@ -161,7 +163,7 @@
               </clip>
           </camera>
           <plugin name="kinect_real_sense_controller" filename="libgazebo_ros_openni_kinect.so">
-              <cameraName>real_sense</cameraName>
+              <cameraName>${robot_name}/real_sense</cameraName>
               <alwaysOn>true</alwaysOn>
               <updateRate>10</updateRate>
               <imageTopicName>rgb/image_raw</imageTopicName>
@@ -169,7 +171,7 @@
               <pointCloudTopicName>depth/points</pointCloudTopicName>
               <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>
               <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
-              <frameName>realsense_depth</frameName>
+              <frameName>${robot_name}/realsense_depth</frameName>
               <baseline>0.1</baseline>
               <distortion_k1>0.0</distortion_k1>
               <distortion_k2>0.0</distortion_k2>
@@ -190,13 +192,13 @@
             <visualize>true</visualize>
             <topic>__default_topic__</topic>
             <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
-                <topicName>imu</topicName>
-                <bodyName>imu</bodyName>
+                <topicName>/${robot_name}/imu</topicName>
+                <bodyName>${robot_name}/imu</bodyName>
                 <updateRateHZ>100.0</updateRateHZ>
                 <gaussianNoise>0.0</gaussianNoise>
                 <xyzOffset>0 0 0</xyzOffset>
                 <rpyOffset>0 0 0</rpyOffset>
-                <frameName>imu</frameName>
+                <frameName>${robot_name}/imu</frameName>
             </plugin>
             <pose>0 0 0 0 0 0</pose>
         </sensor>

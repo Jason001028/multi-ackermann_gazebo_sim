@@ -1,12 +1,19 @@
 <!-- slam_navi_car1.launch -->
 <launch>
-    <include file="$(find racebot_gazebo)/launch/teb_base.launch"/>
-    <include file="$(find racebot_gazebo)/launch/slam_gmapping.launch"/>
-    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find racebot_gazebo)/rviz/nav.rviz"/>
-    
-    <arg name="init_wait" default="10"/>
-    <node pkg="patrol_pkg" type="demo_navigation1.sh" name="demo_navigation1.sh" 
-          output="screen"
-          launch-prefix="bash -c 'sleep $(arg init_wait); $(find patrol_pkg)/scripts/demo_navigation1.sh'" />
-</launch>
+    <group ns="car1">
+        <include file="$(find racebot_gazebo)/launch/teb_base.launch">
+            <arg name="robot_name" value="car1"/>
+        </include>
+        <include file="$(find racebot_gazebo)/launch/slam_gmapping.launch">
+            <arg name="robot_name" value="car1"/>
+        </include>
+    </group>
 
+    <node pkg="rviz" type="rviz" name="rviz_car1"
+          args="-d $(find racebot_gazebo)/rviz/nav_car1.rviz"/>
+
+    <arg name="init_wait" default="10"/>
+    <node pkg="patrol_pkg" type="demo_navigation1.sh" name="demo_navigation1"
+          output="screen"
+          launch-prefix="bash -c 'sleep $(arg init_wait); $(find patrol_pkg)/scripts/demo_navigation1.sh'"/>
+</launch>

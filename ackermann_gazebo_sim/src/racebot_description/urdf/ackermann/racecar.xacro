@@ -2,8 +2,11 @@
 
 <robot name="racebot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+    <xacro:arg name="robot_name" default="racebot"/>
+    <xacro:property name="robot_name" value="$(arg robot_name)"/>
+
     <xacro:include filename="$(find racebot_description)/urdf/ackermann/macros.xacro" />
-    
+
     <link name="base_footprint">
     </link>
 

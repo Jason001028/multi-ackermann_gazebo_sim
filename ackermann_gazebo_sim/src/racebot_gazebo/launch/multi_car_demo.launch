@@ -1,19 +1,25 @@
 <!-- multi_car_demo.launch -->
 <launch>
-    <!-- 加载三辆车的仿真模型 -->
+    <!-- 加载三辆车的仿真模型（Gazebo world 由 car1 的 racebot.launch 负责启动） -->
     <include file="$(find racebot_gazebo)/launch/racebot.launch">
         <arg name="robot_name" value="car1"/>
-        <arg name="init_pose" value="-x 0 -y 0 -z 0"/>
+        <arg name="x_pos" value="0"/>
+        <arg name="y_pos" value="0"/>
+        <arg name="z_pos" value="0"/>
     </include>
 
     <include file="$(find racebot_gazebo)/launch/racebot.launch">
         <arg name="robot_name" value="car2"/>
-        <arg name="init_pose" value="-x 2 -y 2 -z 0"/>
+        <arg name="x_pos" value="2"/>
+        <arg name="y_pos" value="2"/>
+        <arg name="z_pos" value="0"/>
     </include>
 
     <include file="$(find racebot_gazebo)/launch/racebot.launch">
         <arg name="robot_name" value="car3"/>
-        <arg name="init_pose" value="-x -2 -y -2 -z 0"/>
+        <arg name="x_pos" value="-2"/>
+        <arg name="y_pos" value="-2"/>
+        <arg name="z_pos" value="0"/>
     </include>
 
     <!-- 启动三辆车的导航系统 -->
@@ -21,8 +27,4 @@
     <include file="$(find racebot_gazebo)/launch/slam_navi_car2.launch"/>
     <include file="$(find racebot_gazebo)/launch/slam_navi_car3.launch"/>
 
-    <!-- 运行rviz -->
-    <node pkg="rviz" type="rviz" name="rviz" 
-          args="-d $(find racebot_gazebo)/rviz/multi_nav.rviz"/>
 </launch>
-
