@@ -1,0 +1,3 @@
+# 屏蔽 catkin_make 生成的两个核心编译文件夹（你要禁止的）
+ackermann_gazebo_sim/build/
+ackermann_gazebo_sim/devel/

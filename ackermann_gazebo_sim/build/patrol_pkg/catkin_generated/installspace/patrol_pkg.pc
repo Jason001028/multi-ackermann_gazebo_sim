@@ -1,8 +1,0 @@
-prefix=/home/wang/桌面/验收方案（位置规划脚本+多车电台开发）/ackermann_gazebo_sim/install
-
-Name: patrol_pkg
-Description: Description of patrol_pkg
-Version: 1.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
