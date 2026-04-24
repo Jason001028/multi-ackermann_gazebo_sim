@@ -2,6 +2,7 @@
   <arg name="robot_name" default="racebot"/>
 
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen" clear_params="true">
+    <remap from="cmd_vel" to="/$(arg robot_name)/cmd_vel"/>
     <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
 
     <rosparam file="$(find racebot_gazebo)/config/teb/costmap_common_params.yaml" command="load" ns="global_costmap" subst_value="true"/>
@@ -18,6 +19,7 @@
     <param name="local_costmap/robot_base_frame" value="$(arg robot_name)/base_footprint"/>
     <param name="global_costmap/obstacle_layer/scan/topic" value="/$(arg robot_name)/scan"/>
     <param name="local_costmap/obstacle_layer/scan/topic" value="/$(arg robot_name)/scan"/>
+    <param name="TebLocalPlannerROS/map_frame" value="$(arg robot_name)/map"/>
   </node>
 
 </launch>

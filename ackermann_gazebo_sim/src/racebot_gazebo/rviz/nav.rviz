@@ -53,7 +53,7 @@ Visualization Manager:
       Radius: 0.029999999329447746
       Shaft Diameter: 0.10000000149011612
       Shaft Length: 0.10000000149011612
-      Topic: /car1_history/local_plan  # 修改为重映射后的话题
+      Topic: /racebot_history/local_plan  # 修改为重映射后的话题
       Unreliable: false
       Value: true
 
@@ -76,7 +76,7 @@ Visualization Manager:
       Radius: 0.029999999329447746
       Shaft Diameter: 0.10000000149011612
       Shaft Length: 0.10000000149011612
-      Topic: /car1_history/global_plan  # 修改为重映射后的话题
+      Topic: /racebot_history/global_plan  # 修改为重映射后的话题
       Unreliable: false
       Value: true
 
@@ -144,7 +144,7 @@ Visualization Manager:
         Z: 0
       Plane: XY
       Plane Cell Count: 80
-      Reference Frame: odom
+      Reference Frame: racebot/odom
       Value: true
     - Angle Tolerance: 0.10000000149011612
       Class: rviz/Odometry
@@ -292,8 +292,8 @@ Visualization Manager:
           Show Trail: false
           Value: true
       Name: RobotModel
-      Robot Description: robot_description
-      TF Prefix: ""
+      Robot Description: racebot/robot_description
+      TF Prefix: racebot
       Update Interval: 0
       Value: true
       Visual Enabled: true
@@ -303,7 +303,7 @@ Visualization Manager:
       Draw Behind: true
       Enabled: true
       Name: Map
-      Topic: /map
+      Topic: /racebot/map
       Unreliable: false
       Use Timestamp: false
       Value: true
@@ -328,7 +328,7 @@ Visualization Manager:
       Radius: 0.029999999329447746
       Shaft Diameter: 0.10000000149011612
       Shaft Length: 0.10000000149011612
-      Topic: /move_base/TebLocalPlannerROS/local_plan
+      Topic: /racebot/move_base/TebLocalPlannerROS/local_plan
       Unreliable: false
       Value: true
     - Alpha: 1
@@ -351,7 +351,7 @@ Visualization Manager:
       Radius: 0.029999999329447746
       Shaft Diameter: 0.10000000149011612
       Shaft Length: 0.10000000149011612
-      Topic: /move_base/TebLocalPlannerROS/global_plan
+      Topic: /racebot/move_base/TebLocalPlannerROS/global_plan
       Unreliable: false
       Value: true
     - Alpha: 1
@@ -393,9 +393,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.009999999776482582
       Style: Points
-      Topic: /scan
-      Unreliable: false
-      Use Fixed Frame: true
+      Topic: /racebot/scan
       Use rainbow: true
       Value: true
     - Alpha: 1
@@ -410,7 +408,7 @@ Visualization Manager:
       Shaft Length: 0.5
       Shaft Radius: 0.029999999329447746
       Shape: Arrow
-      Topic: /move_base_simple/goal
+      Topic: /racebot/move_base_simple/goal
       Unreliable: false
       Value: true
     - Alpha: 0.699999988079071
@@ -419,7 +417,7 @@ Visualization Manager:
       Draw Behind: false
       Enabled: true
       Name: Inflated Obstacles
-      Topic: /move_base/local_costmap/costmap
+      Topic: /racebot/move_base/local_costmap/costmap
       Unreliable: false
       Use Timestamp: false
       Value: true
@@ -437,7 +435,7 @@ Visualization Manager:
       Draw Behind: false
       Enabled: true
       Name: Map
-      Topic: /move_base/global_costmap/costmap
+      Topic: /racebot/move_base/global_costmap/costmap
       Unreliable: false
       Use Timestamp: false
       Value: true
@@ -445,7 +443,7 @@ Visualization Manager:
   Global Options:
     Background Color: 0; 0; 0
     Default Light: true
-    Fixed Frame: map
+    Fixed Frame: racebot/map
     Frame Rate: 30
   Name: root
   Tools:
@@ -459,7 +457,7 @@ Visualization Manager:
       X std deviation: 0.5
       Y std deviation: 0.5
     - Class: rviz/SetGoal
-      Topic: /move_base_simple/goal
+      Topic: /racebot/move_base_simple/goal
   Value: true
   Views:
     Current:

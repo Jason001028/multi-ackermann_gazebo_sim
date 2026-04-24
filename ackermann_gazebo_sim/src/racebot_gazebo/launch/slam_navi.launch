@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- 建图阶段，robot_name 需与 racebot.launch 启动时的 robot_name 一致 -->
+  <arg name="robot_name" default="racebot"/>
+
+  <group ns="$(arg robot_name)">
+    <include file="$(find racebot_gazebo)/launch/teb_base.launch">
+      <arg name="robot_name" value="$(arg robot_name)"/>
+    </include>
+
+    <include file="$(find racebot_gazebo)/launch/slam_gmapping.launch">
+      <arg name="robot_name" value="$(arg robot_name)"/>
+    </include>
+  </group>
+
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find racebot_gazebo)/rviz/nav.rviz"/>
+
+</launch>

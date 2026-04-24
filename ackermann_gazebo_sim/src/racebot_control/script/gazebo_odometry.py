@@ -6,7 +6,7 @@ Translates Gazebo link states to per-robot odometry, capped at 20 Hz.
 
 import rospy
 from nav_msgs.msg import Odometry
-from geometry_msgs.msg import Pose, Twist, Transform, TransformStamped
+from geometry_msgs.msg import Pose, Twist, Transform, TransformStamped, Vector3
 from gazebo_msgs.msg import LinkStates
 from std_msgs.msg import Header
 import tf2_ros
@@ -44,7 +44,7 @@ class OdometryNode:
             return
 
         cmd = Odometry()
-        cmd.header.stamp = self.last_recieved_stamp
+        cmd.header.stamp = rospy.Time.now()
         cmd.header.frame_id = self.odom_frame
         cmd.child_frame_id = self.base_frame
         cmd.pose.pose = self.last_received_pose
@@ -68,7 +68,11 @@ class OdometryNode:
             header=Header(frame_id=self.odom_frame, stamp=cmd.header.stamp),
             child_frame_id=self.base_frame,
             transform=Transform(
-                translation=cmd.pose.pose.position,
+                translation=Vector3(
+                    x=cmd.pose.pose.position.x,
+                    y=cmd.pose.pose.position.y,
+                    z=cmd.pose.pose.position.z
+                ),
                 rotation=cmd.pose.pose.orientation
             )
         )

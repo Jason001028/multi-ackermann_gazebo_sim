@@ -1,5 +1,9 @@
 <!-- multi_car_demo.launch -->
+<!-- 参数 slam:=true  → 建图模式（默认）  -->
+<!-- 参数 slam:=false → 纯导航模式，需提前保存地图到 map/ 目录 -->
 <launch>
+    <arg name="slam" default="false"/>
+
     <!-- 加载三辆车的仿真模型（Gazebo world 由 car1 的 racebot.launch 负责启动） -->
     <include file="$(find racebot_gazebo)/launch/racebot.launch">
         <arg name="robot_name" value="car1"/>
@@ -22,9 +26,18 @@
         <arg name="z_pos" value="0"/>
     </include>
 
-    <!-- 启动三辆车的导航系统 -->
-    <include file="$(find racebot_gazebo)/launch/slam_navi_car1.launch"/>
-    <include file="$(find racebot_gazebo)/launch/slam_navi_car2.launch"/>
-    <include file="$(find racebot_gazebo)/launch/slam_navi_car3.launch"/>
+    <!-- 建图模式：slam_gmapping + move_base -->
+    <group if="$(arg slam)">
+        <include file="$(find racebot_gazebo)/launch/slam_navi_car1.launch"/>
+        <include file="$(find racebot_gazebo)/launch/slam_navi_car2.launch"/>
+        <include file="$(find racebot_gazebo)/launch/slam_navi_car3.launch"/>
+    </group>
+
+    <!-- 纯导航模式：map_server + amcl + move_base，地图加载到参数服务器 -->
+    <group unless="$(arg slam)">
+        <include file="$(find racebot_gazebo)/launch/navi_car1.launch"/>
+        <include file="$(find racebot_gazebo)/launch/navi_car2.launch"/>
+        <include file="$(find racebot_gazebo)/launch/navi_car3.launch"/>
+    </group>
 
 </launch>
