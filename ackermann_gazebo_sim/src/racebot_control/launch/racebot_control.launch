@@ -19,10 +19,9 @@
                 joint_state_controller"/>
 
     <!-- robot_state_publisher 在命名空间内，joint_states 话题自动匹配 -->
+    <!-- 不设 tf_prefix：link 名已在 xacro 里含 robot_name/ 前缀，避免双重前缀 -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
-      <!-- robot_description is loaded at /$(robot_name)/robot_description by racebot.launch -->
       <param name="robot_description" value="/$(arg robot_name)/robot_description"/>
-      <param name="tf_prefix" value="$(arg robot_name)"/>
     </node>
 
     <!-- servo 控制节点 -->

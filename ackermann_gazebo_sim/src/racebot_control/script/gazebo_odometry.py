@@ -16,7 +16,7 @@ class OdometryNode:
 
     def __init__(self):
         self.robot_name = rospy.get_param('~robot_name', rospy.get_namespace().strip('/') or 'racebot')
-        self.link_name = self.robot_name + '::base_footprint'
+        self.link_name = self.robot_name + '::' + self.robot_name + '/base_footprint'
         self.odom_frame = self.robot_name + '/odom'
         self.base_frame = self.robot_name + '/base_footprint'
 

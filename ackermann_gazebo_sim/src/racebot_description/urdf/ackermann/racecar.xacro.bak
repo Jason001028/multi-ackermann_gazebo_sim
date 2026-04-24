@@ -10,7 +10,7 @@
     <link name="${robot_name}/base_footprint">
     </link>
 
-    <link name="${robot_name}/base_link">
+    <link name="base_link">
         <visual>
             <geometry>
                 <box size="0.28 0.1 0.03"/>
@@ -33,14 +33,14 @@
 
     <joint name="base_link2base_footprint" type="fixed">
         <parent link="${robot_name}/base_footprint" />
-        <child link="${robot_name}/base_link"/>
+        <child link="base_link"/>
         <origin xyz="0 0 0.032" rpy="0 0 0" />
     </joint>
 
 
 
 
-    <link name="${robot_name}/base_inertia">
+    <link name="base_inertia">
     <inertial>
             <origin xyz="0 0 0" />
             <mass value="4" />
@@ -51,14 +51,14 @@
     
     <joint name="chassis_inertia_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0" />
-    <parent link="${robot_name}/base_link" />
-    <child link="${robot_name}/base_inertia" />
+    <parent link="base_link" />
+    <child link="base_inertia" />
   </joint>
 
 
 
 
-    <link name="${robot_name}/left_steering_hinge">
+    <link name="left_steering_hinge">
         <visual>
             <geometry>
                 <cylinder radius="0.01" length="0.005" />
@@ -85,8 +85,8 @@
 
 
     <joint name="left_steering_hinge_joint" type="revolute">
-        <parent link="${robot_name}/base_link" />
-        <child link="${robot_name}/left_steering_hinge" />
+        <parent link="base_link" />
+        <child link="left_steering_hinge" />
         <origin xyz="0.13 0.065 0" />
         <axis xyz="0 0 1" />
         <limit lower="-0.6" upper="0.6" effort="5.0" velocity="1000.0"/>
@@ -97,7 +97,7 @@
 
 
 
-    <link name="${robot_name}/left_front_wheel">
+    <link name="left_front_wheel">
         <visual>
             <geometry>
                 <cylinder radius="0.033" length="0.02" />
@@ -121,8 +121,8 @@
     </link>
 
     <joint name="left_front_wheel_joint" type="continuous">
-        <parent link="${robot_name}/left_steering_hinge" />
-        <child link="${robot_name}/left_front_wheel" />
+        <parent link="left_steering_hinge" />
+        <child link="left_front_wheel" />
         <origin xyz="0 0.025 0" />
         <axis xyz="0 1 0" />
         <limit effort="10" velocity="1000" />
@@ -132,7 +132,7 @@
 
 
 
-<link name="${robot_name}/right_steering_hinge">
+<link name="right_steering_hinge">
         <visual>
             <geometry>
                  <cylinder radius="0.01" length="0.005" />
@@ -156,8 +156,8 @@
     </link>
 
     <joint name="right_steering_hinge_joint" type="revolute">
-        <parent link="${robot_name}/base_link" />
-        <child link="${robot_name}/right_steering_hinge" />
+        <parent link="base_link" />
+        <child link="right_steering_hinge" />
         <origin xyz="0.13 -0.065 0" />
         <axis xyz="0 0 1" />
         <limit lower="-0.6" upper="0.6" effort="5.0" velocity="1000.0"/>
@@ -169,7 +169,7 @@
 
 
 
-     <link name="${robot_name}/right_front_wheel">
+     <link name="right_front_wheel">
         <visual>
             <geometry>
                 <cylinder radius="0.033" length="0.02" />
@@ -193,8 +193,8 @@
     </link>
 
     <joint name="right_front_wheel_joint" type="continuous">
-        <parent link="${robot_name}/right_steering_hinge" />
-        <child link="${robot_name}/right_front_wheel" />
+        <parent link="right_steering_hinge" />
+        <child link="right_front_wheel" />
         <origin xyz="0 -0.025 0" />
         <axis xyz="0 1 0" />
         <limit effort="10" velocity="1000" />
@@ -203,7 +203,7 @@
 
 
 
-    <link name="${robot_name}/left_rear_wheel">
+    <link name="left_rear_wheel">
         <visual>
             <geometry>
                 <cylinder radius="0.032" length="0.02" />
@@ -227,8 +227,8 @@
     </link>
 
     <joint name="left_rear_wheel_joint" type="continuous">
-        <parent link="${robot_name}/base_link" />
-        <child link="${robot_name}/left_rear_wheel" />
+        <parent link="base_link" />
+        <child link="left_rear_wheel" />
         <origin xyz="-0.13 0.09 0" />
         <axis xyz="0 1 0" />
         <limit effort="10" velocity="1000" />
@@ -237,7 +237,7 @@
 
 
 
-    <link name="${robot_name}/right_rear_wheel">
+    <link name="right_rear_wheel">
         <visual>
             <geometry>
                 <cylinder radius="0.032" length="0.02" />
@@ -261,15 +261,15 @@
     </link>
 
     <joint name="right_rear_wheel_joint" type="continuous">
-        <parent link="${robot_name}/base_link" />
-        <child link="${robot_name}/right_rear_wheel" />
+        <parent link="base_link" />
+        <child link="right_rear_wheel" />
         <origin xyz="-0.13 -0.09 0" />
         <axis xyz="0 1 0" />
         <limit effort="10" velocity="1000" />
     </joint>
     <xacro:wheel_transmission name="right_rear_wheel" />
 
-    <link name="${robot_name}/camera">
+    <link name="camera">
         <visual>
             <geometry>
                 <box size="0.005 0.03 0.03"/>
@@ -293,15 +293,15 @@
     </link>
 
     <joint name="camera_joint" type="fixed">
-        <parent link="${robot_name}/base_link" />
-        <child link="${robot_name}/camera" />
+        <parent link="base_link" />
+        <child link="camera" />
         <origin xyz="0.14851 0.0022137 0.0975" />
         <axis xyz="0 0 1" />
     </joint>
 
 
 
-    <link name="${robot_name}/real_sense">
+    <link name="real_sense">
         <visual>
             <geometry>
                 <box size="0.01 0.1 0.02"/>
@@ -325,21 +325,21 @@
     </link>
 
     <joint name="realsense_joint" type="fixed">
-        <parent link="${robot_name}/base_link" />
-        <child link="${robot_name}/real_sense" />
+        <parent link="base_link" />
+        <child link="real_sense" />
         <origin xyz="0.19864 0.0038046 0.052021" />
         <axis xyz="0 0 1" />
     </joint>
 
-    <link name="${robot_name}/realsense_depth"/>
+    <link name="realsense_depth"/>
     <joint name="realsense_depth_joint" type="fixed">
             <origin xyz="0 0 0" rpy="-1.5708 0 -1.5708"/>
-            <parent link="${robot_name}/real_sense"/>
-            <child link="${robot_name}/realsense_depth"/>
+            <parent link="real_sense"/>
+            <child link="realsense_depth"/>
     </joint>
 
 
-    <link name="${robot_name}/lidar">
+    <link name="lidar">
         <visual>
             <geometry>
                 <cylinder radius="0.03" length="0.06" />
@@ -363,13 +363,13 @@
     </link>
 
     <joint name="lidar_joint" type="fixed">
-        <parent link="${robot_name}/base_link" />
-        <child link="${robot_name}/lidar" />
+        <parent link="base_link" />
+        <child link="lidar" />
         <origin xyz="0.093603 0 0.12377" />
         <axis xyz="0 0 1" />
     </joint>
 
-    <link name="${robot_name}/imu">
+    <link name="imu">
         <visual>
             <geometry>
                 <box size="0.01 0.01 0.005"/>
@@ -393,8 +393,8 @@
     </link>
 
     <joint name="imu_joint" type="fixed">
-        <parent link="${robot_name}/base_link" />
-        <child link="${robot_name}/imu" />
+        <parent link="base_link" />
+        <child link="imu" />
         <origin xyz="0 0 0.02" />
         <axis xyz="0 0 1" />
     </joint>
