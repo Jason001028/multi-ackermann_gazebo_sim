@@ -8,14 +8,14 @@
     <include file="$(find racebot_gazebo)/launch/racebot.launch">
         <arg name="robot_name" value="car1"/>
         <arg name="x_pos" value="0"/>
-        <arg name="y_pos" value="0"/>
+        <arg name="y_pos" value="13"/>
         <arg name="z_pos" value="0"/>
     </include>
 
     <include file="$(find racebot_gazebo)/launch/racebot.launch">
         <arg name="robot_name" value="car2"/>
-        <arg name="x_pos" value="2"/>
-        <arg name="y_pos" value="2"/>
+        <arg name="x_pos" value="14"/>
+        <arg name="y_pos" value="-11"/>
         <arg name="z_pos" value="0"/>
     </include>
 
