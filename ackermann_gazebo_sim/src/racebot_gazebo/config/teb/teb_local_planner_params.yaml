@@ -1,7 +1,7 @@
 TebLocalPlannerROS:
 
   odom_topic: odom
-  map_frame: /map
+  map_frame: map
       
   # Trajectoty 这部分主要是用于调整轨迹
 
@@ -16,7 +16,7 @@ TebLocalPlannerROS:
 #指定考虑优化的全局计划子集的最大长度,如果为0或负数：禁用；长度也受本地Costmap大小的限制
   max_global_plan_lookahead_dist: 3.0 
 
-  feasibility_check_no_poses: 1 #检测位姿可到达的时间间隔，default：4
+  feasibility_check_no_poses: 5 #检测位姿可到达的时间间隔，default：4
     
   #如果为true，则在目标落后于起点的情况下，可以使用向后运动来初始化基础轨迹
   #(仅在机器人配备了后部传感器的情况下才建议这样做）
@@ -67,11 +67,11 @@ TebLocalPlannerROS:
     type: "polygon"
     vertices: [[0.15, 0.15], [0.15, -0.15], [-0.15, -0.15], [-0.15, 0.15]]    
 
-  xy_goal_tolerance: 0.1
-  yaw_goal_tolerance: 1.0
+  xy_goal_tolerance: 0.5
+  yaw_goal_tolerance: 1.5
   #自由目标速度。设为False时，车辆到达终点时的目标速度为0。
   #TEB是时间最优规划器。缺少目标速度约束将导致车辆“全速冲线”
-  free_goal_vel: True
+  free_goal_vel: False
   
   # complete_global_plan: True   
   # Obstacles
@@ -95,7 +95,7 @@ TebLocalPlannerROS:
   weight_acc_lim_x: 1
   weight_acc_lim_theta: 2 #1
   weight_kinematics_nh: 1000
-  weight_kinematics_forward_drive: 0.1 #1
+  weight_kinematics_forward_drive: 5.0 #1
   weight_kinematics_turning_radius: 1 #1
   weight_optimaltime: 1
   weight_obstacle: 10 #50
@@ -118,12 +118,12 @@ TebLocalPlannerROS:
   obstacle_heading_threshold: 0.45
   visualize_hc_graph: False
 
-  # # Recovery
+  # Recovery
 
-  # shrink_horizon_backup: True
-  # shrink_horizon_min_duration: 10
-  # oscillation_recovery: True
-  # oscillation_v_eps: 0.1
-  # oscillation_omega_eps: 0.1
-  # oscillation_recovery_min_duration: 10
-  # oscillation_filter_duration: 10
+  shrink_horizon_backup: True
+  shrink_horizon_min_duration: 3
+  oscillation_recovery: True
+  oscillation_v_eps: 0.1
+  oscillation_omega_eps: 0.1
+  oscillation_recovery_min_duration: 3
+  oscillation_filter_duration: 5

@@ -22,6 +22,8 @@ WORKDIR /root/catkin_ws
 # 安装依赖 (合并RUN命令以减少层数)
 RUN apt-get update && apt-get install -y \
     python-tk \
+    python-scipy \
+    python-numpy \
     libarmadillo-dev \
     ros-${ROS_DISTRO}-nlopt \
     libelf-dev \

@@ -2,7 +2,7 @@
 <launch>
     <arg name="map_file" default="$(find racebot_gazebo)/map/shared_map.yaml"/>
     <arg name="initial_pose_x" default="0.0"/>
-    <arg name="initial_pose_y" default="0.0"/>
+    <arg name="initial_pose_y" default="13.0"/>
     <arg name="initial_pose_a" default="0.0"/>
 
     <group ns="car1">

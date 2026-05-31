@@ -1,0 +1,11 @@
+[
+  {"task_id": 1, "x":  2.9, "y": -2.5, "base_priority": 3},
+  {"task_id": 2, "x":  3.5, "y": -5.0, "base_priority": 3},
+  {"task_id": 3, "x":  2.3, "y": -6.0, "base_priority": 3},
+  {"task_id": 4, "x":  1.9, "y":  1.0, "base_priority": 2},
+  {"task_id": 5, "x":  3.3, "y":  2.5, "base_priority": 2},
+  {"task_id": 6, "x": -1.9, "y": -4.0, "base_priority": 2},
+  {"task_id": 7, "x": -1.2, "y":  4.0, "base_priority": 1},
+  {"task_id": 8, "x":  0.5, "y":  6.0, "base_priority": 1},
+  {"task_id": 9, "x": -2.3, "y":  1.5, "base_priority": 1}
+]

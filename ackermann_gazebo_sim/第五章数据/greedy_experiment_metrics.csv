@@ -1,0 +1,2 @@
+Algorithm,Makespan_s,Total_Distance_m,Workload_Variance_m2,Strategic_Response_Time_s,car1_dist_m,car2_dist_m,car3_dist_m,Timestamp
+greedy,111.364,162.953,20.3772,98.677,50.942,51.313,60.698,2026-04-28 12:22:58

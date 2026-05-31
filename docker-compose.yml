@@ -2,7 +2,10 @@ name: ackermann_sim
 
 services:
   sim1:
-    image: ackermann_gazebo_sim3
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ackermann_gazebo_sim_custom
     container_name: ackermann_sim1
     stdin_open: true
     tty: true

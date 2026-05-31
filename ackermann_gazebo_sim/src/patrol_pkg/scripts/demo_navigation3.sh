@@ -2,7 +2,8 @@
 
 # 确保ROS环境已经加载
 source /opt/ros/melodic/setup.bash
-source $(catkin locate --devel)/setup.bash
+WS_DEVEL=$(cd "$(dirname "$0")/../../../../.." && pwd)/devel
+[ -f "$WS_DEVEL/setup.bash" ] && source "$WS_DEVEL/setup.bash"
 
 # 配置每段路径的等待时间（秒）
 WAIT_TIME_1_2=5  # 起点到第一个点的等待时间

@@ -1,8 +1,8 @@
 <!-- navi_car2.launch: 纯导航，不建图，使用预先保存的地图 -->
 <launch>
     <arg name="map_file" default="$(find racebot_gazebo)/map/shared_map.yaml"/>
-    <arg name="initial_pose_x" default="2.0"/>
-    <arg name="initial_pose_y" default="2.0"/>
+    <arg name="initial_pose_x" default="14.0"/>
+    <arg name="initial_pose_y" default="-11.0"/>
     <arg name="initial_pose_a" default="0.0"/>
 
     <group ns="car2">

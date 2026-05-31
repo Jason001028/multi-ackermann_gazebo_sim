@@ -1,6 +1,6 @@
 local_costmap:
   # global_frame: odom
-  global_frame: map
+  global_frame: odom
   robot_base_frame: base_footprint
   transform_tolerance: 0.5
 
@@ -20,8 +20,8 @@ local_costmap:
 
   inflation_layer:
     enabled:              true
-    cost_scaling_factor:  10.0  # exponential rate at which the obstacle cost drops off (default: 10)
-    inflation_radius:     0.08  # max. distance from an obstacle at which costs are incurred for planning paths.
+    cost_scaling_factor:  5.0
+    inflation_radius:     0.2
 
 
 
